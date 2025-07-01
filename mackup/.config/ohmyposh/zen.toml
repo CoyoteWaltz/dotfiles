@@ -1,0 +1,114 @@
+console_title_template = '{{ .Shell }} in {{ .Folder }}'
+version = 3
+final_space = true
+
+[secondary_prompt]
+  template = '❯❯ '
+  foreground = 'magenta'
+  background = 'transparent'
+
+[transient_prompt]
+  template = '❯ '
+  background = 'transparent'
+  foreground_templates = ['{{if gt .Code 0}}red{{end}}', '{{if eq .Code 0}}magenta{{end}}']
+
+[[blocks]]
+  type = 'prompt'
+  alignment = 'left'
+  newline = true
+
+  [[blocks.segments]]
+    template = '{{ .Path }}'
+    foreground = 'blue'
+    background = 'transparent'
+    type = 'path'
+    style = 'plain'
+
+    [blocks.segments.properties]
+      cache_duration = 'none'
+      style = 'full'
+
+  [[blocks.segments]]
+    template = """ \
+    {{ .HEAD }}\
+    {{ if or (.Working.Changed) (.Staging.Changed) }}*{{ end }} \
+    <#eeff41>{{ if .Working.Changed }}{{ .Working.String }} {{ end }}</>\
+    <#eeff41>{{ if .Staging.Changed }}{{ .Staging.String }} {{ end }}</>\
+    <cyan>{{ if gt .Behind 0 }}⇣ {{ end }}{{ if gt .Ahead 0 }}⇡ {{ end }}</>\
+    <cyan>{{ if gt .StashCount 0 }} {{ .StashCount }} {{ end }}</>\
+    """
+    foreground = 'p:grey'
+    background = 'transparent'
+    type = 'git'
+    style = 'plain'
+
+    [blocks.segments.properties]
+      branch_icon = ''
+      cache_duration = 'none'
+      commit_icon = '@'
+      fetch_status = true
+
+  [[blocks.segments]]
+    template = '{{if .Version}} {{.Version}} {{end}}'
+    foreground = '#5EADF2'
+    background = 'transparent'
+    type = 'project'
+    style = 'plain'
+
+  [[blocks.segments]]
+    template = ' v{{ .Full }}{{ if .PackageManagerIcon }}-{{ .PackageManagerIcon }}{{ end }}'
+    foreground = '#44FFD2'
+    background = 'transparent'
+    type = 'node'
+    style = 'plain'
+
+    [blocks.segments.properties]
+      pnpm_icon = ''
+      yarn_icon = ''
+      npm_icon = ''
+      bun_icon = ''
+      fetch_version = true
+      fetch_package_manager = true
+
+  [[blocks.segments]]
+    type = "rust"
+    style = "plain"
+    foreground = "#CE412B"
+    background = 'transparent'
+    template = " {{ .Full }} "
+
+    [blocks.segments.properties]
+      fetch_version = true
+
+
+
+[[blocks]]
+  type = 'rprompt'
+  overflow = 'hide'
+
+  [[blocks.segments]]
+    template = '{{ .FormattedMs }}'
+    foreground = 'yellow'
+    background = 'transparent'
+    type = 'executiontime'
+    style = 'plain'
+
+    [blocks.segments.properties]
+      cache_duration = 'none'
+      # threshold = 5000
+      always_enabled = true
+
+[[blocks]]
+  type = 'prompt'
+  alignment = 'left'
+  newline = true
+
+  [[blocks.segments]]
+    template = '❯'
+    background = 'transparent'
+    type = 'text'
+    style = 'plain'
+    foreground_templates = ['{{if gt .Code 0}}red{{end}}', '{{if eq .Code 0}}magenta{{end}}']
+
+    [blocks.segments.properties]
+      cache_duration = 'none'

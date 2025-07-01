@@ -1,0 +1,6 @@
+{
+    "window.commandCenter": true,
+    "editor.minimap.enabled": true,
+    "editor.minimap.autohide": true,
+    "editor.fontFamily": "Menlo, MesloLGM Nerd Font, MesloLGS NF,Monaco, 'Courier New', monospace"
+}
