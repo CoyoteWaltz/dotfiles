@@ -16,6 +16,7 @@ zmodule environment
 # Provides handy git aliases and functions.
 # zmodule git
 # use oh-my-zsh/plugins/git instead of git
+zmodule ohmyzsh/ohmyzsh --source lib/git.zsh
 zmodule ohmyzsh/ohmyzsh --root plugins/git
 # Applies correct bindkeys for input events.
 zmodule input
