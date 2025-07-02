@@ -1,5 +1,22 @@
 export https_proxy=http://127.0.0.1:7878;export http_proxy=http://127.0.0.1:7878;export all_proxy=socks5://127.0.0.1:8889
 
+unset http_proxy
+unset https_proxy
+unset all_proxy
+
+toggle_proxy() {
+  if [[ -z "$http_proxy" ]]; then
+    export https_proxy=http://127.0.0.1:7878;export http_proxy=http://127.0.0.1:7878;export all_proxy=socks5://127.0.0.1:8889
+    echo "🟢 Proxy enabled."
+  else
+    unset http_proxy
+    unset https_proxy
+    unset all_proxy
+    echo "🔴 Proxy disabled."
+  fi
+}
+
+
 # -----------------
 # Zim configuration
 # -----------------
@@ -169,4 +186,8 @@ alias ls="eza"
 alias tree="eza --tree"
 alias python="python3"
 alias c="clear"
+alias cb="git branch --show-current | xargs | tr -d '\n' | pbcopy"
 
+gspsp() {
+  git stash && git pull && git stash pop
+}

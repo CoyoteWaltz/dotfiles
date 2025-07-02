@@ -1,0 +1,143 @@
+# espanso match file
+
+# For a complete introduction, visit the official docs at: https://espanso.org/docs/
+
+# You can use this file to define the base matches (aka snippets)
+# that will be available in every application when using espanso.
+
+# Matches are substitution rules: when you type the "trigger" string
+# it gets replaced by the "replace" string.
+matches:
+  - trigger: ":->"
+    replace: "→"
+  - trigger: ":<-"
+    replace: "←"
+  - trigger: ":js"
+    replace: "javascript"
+  - trigger: ":tt"
+    replace: "tiktok"
+  - trigger: ":TT"
+    replace: "TikTok"
+  - trigger: ":ts"
+    replace: "typescript"
+  - trigger: ":JS"
+    replace: "JavaScript"
+  - trigger: ":TS"
+    replace: "TypeScript"
+  - trigger: "elps"
+    replace: "ellipsis"
+    propagate_case: true
+    # word: true
+  - trigger: ":div"
+    replace: "<div>$|$</div>"
+  - trigger: ":afn"
+    replace: "() => {$|$}"
+  - trigger: ":aafn"
+    replace: "async () => {$|$}"
+  - trigger: ":gm"
+    replace: "$|$git merge origin/master"
+  - trigger: ":newp"
+    replace: "new Promise((resolve) => {$|$})"
+  - trigger: ":lh"
+    replace: "localhost"
+  - trigger: ":sp"
+    replace: "sparo "
+
+  - trigger: ":expi"
+    replace: "export interface $|$ {}"
+  - trigger: ":?n"
+    replace: "? ($|$) : null"
+
+  - trigger: ":const"
+    replace: "const {} = $|$ || {}"
+
+  - trigger: ":tc"
+    replace: "t('{{name}}$|$')"
+    vars:
+      - name: "name"
+        type: "clipboard"
+
+  - trigger: ":csw"
+    replace: "console.warn($|$)"
+  - trigger: ":csd"
+    replace: "console.warn('DEBUG===', $|$)"
+  - trigger: ":debug"
+    replace: "DEBUG==="
+    # - trigger: ":d"
+    #   replace: "DEBUG==={{name}}"
+    vars:
+      - name: "name"
+        type: "clipboard"
+  - trigger: ":cd"
+    replace: "console.warn('DEBUG==={{name}}', {{name}}, $|$)"
+    vars:
+      - name: "name"
+        type: "clipboard"
+
+  - trigger: ":code"
+    replace: "code-insiders "
+  - trigger: ":importstyle"
+    replace: "import styles from './index.module.scss';"
+    # :imports(styles) -> import styles from './index.module.scss';
+  - regex: ":imports\\((?P<module>.*)\\)"
+    replace: "import {{module}} from './index.module.scss';"
+
+  - regex: =sum\((?P<num1>\d+),(?P<num2>\d+)\)
+    replace: "{{result}}"
+    vars:
+      - name: result
+        type: shell
+        params:
+          cmd: "expr {{num1}} + {{num2}}"
+
+  # for Rust
+  - trigger: ":prtl"
+    replace: "println!($|$)"
+  # NOTE: espanso uses YAML to define matches, so pay attention to the indentation!
+
+  # But matches can also be dynamic:
+
+  # Print the output of a shell command
+  - trigger: ":shell"
+    replace: "{{output}}"
+    vars:
+      - name: output
+        type: shell
+        params:
+          cmd: "echo 'Hello from your shell'"
+
+  # And much more! For more information, visit the docs: https://espanso.org/docs/
+
+  # Print the current now time
+  - trigger: ":nowtime"
+    replace: "{{now}}"
+    vars:
+      - name: now
+        type: date
+        params:
+          format: "%Y.%m.%d %k:%M:%S"
+
+  # Print the current now time with local timezone
+  - trigger: ":znowtime"
+    replace: "{{now}}"
+    vars:
+      - name: now
+        type: date
+        params:
+          format: "%Y.%m.%d %k:%M:%S %z"
+  # public ip address via ipify
+  - trigger: ":pubip"
+    replace: "{{output}}"
+    vars:
+      - name: output
+        type: shell
+        params:
+          cmd: "curl 'https://api.ipify.org'"
+  # local ip
+  - trigger: ":localip"
+    replace: "{{output}}"
+    vars:
+      - name: output
+        type: shell
+        params:
+          cmd: "ipconfig getifaddr en0"
