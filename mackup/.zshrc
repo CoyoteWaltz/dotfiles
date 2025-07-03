@@ -1,8 +1,14 @@
-export https_proxy=http://127.0.0.1:7878;export http_proxy=http://127.0.0.1:7878;export all_proxy=socks5://127.0.0.1:8889
+# Disable the .DS file creation
+# defaults write com.apple.desktopservices DSDontWriteNetworkStores -bool true
+# defaults write com.apple.desktopservices DSDontWriteUSBStores -bool true
+# Show the path bar in the Finder
+# defaults write com.apple.finder "ShowPathbar" -bool "true" && killall Finder
+# /System/Library/PrivateFrameworks/SystemAdministration.framework/Resources/activateSettings -u
 
 unset http_proxy
 unset https_proxy
 unset all_proxy
+export https_proxy=http://127.0.0.1:7878;export http_proxy=http://127.0.0.1:7878;export all_proxy=socks5://127.0.0.1:8889
 
 toggle_proxy() {
   if [[ -z "$http_proxy" ]]; then
