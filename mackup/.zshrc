@@ -13,12 +13,19 @@ export https_proxy=http://127.0.0.1:7878;export http_proxy=http://127.0.0.1:7878
 toggle_proxy() {
   if [[ -z "$http_proxy" ]]; then
     export https_proxy=http://127.0.0.1:7878;export http_proxy=http://127.0.0.1:7878;export all_proxy=socks5://127.0.0.1:8889
+
     echo "🟢 Proxy enabled."
+    echo "http_proxy: $http_proxy"
+    echo "https_proxy: $https_proxy"
+    echo "all_proxy: $all_proxy"
   else
     unset http_proxy
     unset https_proxy
     unset all_proxy
     echo "🔴 Proxy disabled."
+    echo "http_proxy: $http_proxy"
+    echo "https_proxy: $https_proxy"
+    echo "all_proxy: $all_proxy"
   fi
 }
 
