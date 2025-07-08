@@ -29,7 +29,6 @@ toggle_proxy() {
   fi
 }
 
-
 # -----------------
 # Zim configuration
 # -----------------
@@ -191,8 +190,6 @@ fi
 
 # zoxide
 eval "$(zoxide init zsh --cmd cd)"
-# ensure fzf is loaded for terminal
-source <(fzf --zsh)
 
 # alias
 alias ls="eza"
@@ -204,3 +201,10 @@ alias cb="git branch --show-current | xargs | tr -d '\n' | pbcopy"
 gspsp() {
   git stash && git pull && git stash pop
 }
+
+# fzf-tab
+zstyle ':completion:*' menu select
+zstyle ':completion:*:descriptions' format '[%d]'
+zstyle ':fzf-tab:*' fzf-command fzf
+zstyle ':fzf-tab:*' fzf-flags --height=40% --layout=reverse --border
+zstyle ':fzf-tab:*' prefix ''
