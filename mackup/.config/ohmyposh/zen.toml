@@ -19,14 +19,14 @@ final_space = true
 
   [[blocks.segments]]
     template = '{{ .Path }}'
-    foreground = 'blue'
     background = 'transparent'
     type = 'path'
     style = 'plain'
+    foreground_templates = ['{{if .Writable }}blue{{else}}red{{end}}']
 
     [blocks.segments.properties]
       cache_duration = 'none'
-      style = 'full'
+      style = 'folder'
 
   [[blocks.segments]]
     template = """ \
@@ -112,3 +112,19 @@ final_space = true
 
     [blocks.segments.properties]
       cache_duration = 'none'
+
+
+blocks = [ ]
+tooltips_action = "replace"
+
+[[tooltips]]
+  tips = [ "pwd", "p" ]
+  template = '{{ .Path }}'
+  foreground = 'blue'
+  background = 'transparent'
+  type = 'path'
+  style = 'plain'
+
+  [tooltips.properties]
+    cache_duration = 'none'
+    style = 'full'
