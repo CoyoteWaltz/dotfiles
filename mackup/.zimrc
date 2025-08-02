@@ -19,7 +19,7 @@ zmodule environment
 zmodule ohmyzsh/ohmyzsh --source lib/git.zsh
 zmodule ohmyzsh/ohmyzsh --root plugins/git
 # use oh-my-zsh/plugins/jj
-zmodule ohmyzsh/ohmyzsh --root plugins/jj
+# zmodule ohmyzsh/ohmyzsh --root plugins/jj
 # Applies correct bindkeys for input events.
 zmodule input
 # Sets a custom terminal title.

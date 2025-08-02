@@ -214,4 +214,6 @@ zstyle ':completion:*:descriptions' format '[%d]'
 zstyle ':fzf-tab:*' fzf-command fzf
 zstyle ':fzf-tab:*' fzf-flags --height=40% --layout=reverse --border
 zstyle ':fzf-tab:*' prefix ''
-zstyle :omz:plugins:jj ignore-working-copy yes
+source <(COMPLETE=zsh jj)
+
+# zstyle :omz:plugins:jj ignore-working-copy yes

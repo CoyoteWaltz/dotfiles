@@ -2,5 +2,9 @@
     "window.commandCenter": true,
     "editor.minimap.enabled": true,
     "editor.minimap.autohide": true,
-    "editor.fontFamily": "Menlo, MesloLGM Nerd Font, MesloLGS NF,Monaco, 'Courier New', monospace"
+    "editor.fontFamily": "Menlo, MesloLGM Nerd Font, MesloLGS NF,Monaco, 'Courier New', monospace",
+    "workbench.sideBar.location": "right",
+    "[javascript]": {
+        "editor.defaultFormatter": "esbenp.prettier-vscode"
+    }
 }

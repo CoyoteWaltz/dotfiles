@@ -64,7 +64,7 @@ final_space = true
       fetch_status = true
 
   [[blocks.segments]]
-    template = '{{if .Version}} {{.Version}} {{end}}'
+    template = '{{if .Version}}  {{.Version}} {{end}}'
     foreground = '#5EADF2'
     background = 'transparent'
     type = 'project'
