@@ -4,13 +4,13 @@ final_space = true
 
 [secondary_prompt]
   template = '❯❯ '
-  foreground = 'magenta'
+  foreground = '#67f3e8'
   background = 'transparent'
 
 [transient_prompt]
   template = '❯ '
   background = 'transparent'
-  foreground_templates = ['{{if gt .Code 0}}red{{end}}', '{{if eq .Code 0}}magenta{{end}}']
+  foreground_templates = ['{{if gt .Code 0}}red{{end}}', '{{if eq .Code 0}}#67f3e8{{end}}']
 
 [[blocks]]
   type = 'prompt'
@@ -28,11 +28,26 @@ final_space = true
       cache_duration = 'none'
       style = 'folder'
 
+  # for jj
+  [[blocks.segments]]
+    template = """ \
+    @[{{.ChangeID}}]{{if .Working.Changed}}* {{ .Working.String }}{{ end }}\
+    """
+    type = "jujutsu"
+    style = "plain"
+    foreground = "#cc99ff"
+    background = "transparent"
+
+    [blocks.segments.properties]
+      fetch_status = true
+      ignore_working_copy = false
+
   [[blocks.segments]]
     template = """ \
     {{ .HEAD }}\
+    {{ if .IsWorkTree }}[]{{ end }}\
     {{ if or (.Working.Changed) (.Staging.Changed) }}*{{ end }} \
-    <#eeff41>{{ if .Working.Changed }}{{ .Working.String }} {{ end }}</>\
+    <#73fba9>{{ if and (.Working.Changed) (not .Staging.Changed) }}{{ .Working.String }} {{ end }}</>\
     <#eeff41>{{ if .Staging.Changed }}{{ .Staging.String }} {{ end }}</>\
     <cyan>{{ if gt .Behind 0 }}⇣{{.Behind}} {{ end }}{{ if gt .Ahead 0 }}⇡{{.Ahead}} {{ end }}</>\
     <cyan>{{ if gt .StashCount 0 }} {{ .StashCount }} {{ end }}</>\
@@ -108,7 +123,7 @@ final_space = true
     background = 'transparent'
     type = 'text'
     style = 'plain'
-    foreground_templates = ['{{if gt .Code 0}}red{{end}}', '{{if eq .Code 0}}magenta{{end}}']
+    foreground_templates = ['{{if gt .Code 0}}red{{end}}', '{{if eq .Code 0}}#67f3e8{{end}}']
 
     [blocks.segments.properties]
       cache_duration = 'none'

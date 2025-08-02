@@ -92,6 +92,12 @@ ZSH_HIGHLIGHT_HIGHLIGHTERS=(main brackets)
 # Initialize modules
 # ------------------
 
+
+# for using some plugins of oh my zsh
+# need to set some default vars
+export ZSH_CACHE_DIR="$HOME/.cache/mycustom"
+mkdir -p "$ZSH_CACHE_DIR/completions"
+
 ZIM_HOME=${ZDOTDIR:-${HOME}}/.zim
 # Download zimfw plugin manager if missing.
 if [[ ! -e ${ZIM_HOME}/zimfw.zsh ]]; then
@@ -208,3 +214,4 @@ zstyle ':completion:*:descriptions' format '[%d]'
 zstyle ':fzf-tab:*' fzf-command fzf
 zstyle ':fzf-tab:*' fzf-flags --height=40% --layout=reverse --border
 zstyle ':fzf-tab:*' prefix ''
+zstyle :omz:plugins:jj ignore-working-copy yes

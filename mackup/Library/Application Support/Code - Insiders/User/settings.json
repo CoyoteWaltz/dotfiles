@@ -1,3 +1,4 @@
 {
-    "editor.fontFamily": "Menlo, MesloLGM Nerd Font, MesloLGS NF,Monaco, 'Courier New', monospace"
+    "editor.fontFamily": "Menlo, MesloLGM Nerd Font, MesloLGS NF,Monaco, 'Courier New', monospace",
+    "workbench.sideBar.location": "right"
 }
