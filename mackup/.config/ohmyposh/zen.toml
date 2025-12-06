@@ -31,7 +31,9 @@ final_space = true
   # for jj
   [[blocks.segments]]
     template = """ \
-    @[{{.ChangeID}}]{{if .Working.Changed}}* {{ .Working.String }}{{ end }}\
+    @[{{.ChangeID}}]\
+    {{if .Working.Changed}}* \
+    <#ffd479>{{ .Working.String }}</>{{ end }}\
     """
     type = "jujutsu"
     style = "plain"
@@ -64,14 +66,14 @@ final_space = true
       fetch_status = true
 
   [[blocks.segments]]
-    template = '{{if .Version}}  {{.Version}} {{end}}'
+    template = '{{if .Version}}  {{.Version}}{{end}}'
     foreground = '#5EADF2'
     background = 'transparent'
     type = 'project'
     style = 'plain'
 
   [[blocks.segments]]
-    template = ' v{{ .Full }}{{ if .PackageManagerIcon }}-{{ .PackageManagerIcon }}{{ end }}'
+    template = '  v{{ .Full }}{{ if .PackageManagerIcon }}-{{ .PackageManagerIcon }}{{ end }}'
     foreground = '#44FFD2'
     background = 'transparent'
     type = 'node'
@@ -90,7 +92,7 @@ final_space = true
     style = "plain"
     foreground = "#CE412B"
     background = 'transparent'
-    template = " {{ .Full }} "
+    template = "  {{ .Full }} "
 
     [blocks.segments.properties]
       fetch_version = true

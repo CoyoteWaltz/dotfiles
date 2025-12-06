@@ -203,6 +203,8 @@ alias tree="eza --tree"
 alias python="python3"
 alias c="clear"
 alias cb="git branch --show-current | xargs | tr -d '\n' | pbcopy"
+alias jjgf="jj git fetch"
+alias jjcb="jj bnow | pbcopy"
 
 gspsp() {
   git stash && git pull && git stash pop
@@ -217,3 +219,13 @@ zstyle ':fzf-tab:*' prefix ''
 source <(COMPLETE=zsh jj)
 
 # zstyle :omz:plugins:jj ignore-working-copy yes
+
+# Golang
+export GOPATH=$HOME/go
+export GOBIN=$HOME/go/bin
+export GO111MODULE=on
+export RUNTIME_IDC_NAME=boe
+export PATH="/opt/homebrew/opt/go@1.22/bin:$PATH"
+export PATH=$PATH:$HOME/go/bin
+
+export PATH=$HOME/.local/bin:$PATH

@@ -43,7 +43,7 @@
 theme = Seti
 
 # quick terminal
-keybind = global:ctrl+super+e=toggle_quick_terminal
+keybind = global:ctrl+alt+e=toggle_quick_terminal
 quick-terminal-animation-duration = 0
 quick-terminal-screen = mouse
 quick-terminal-position = center
